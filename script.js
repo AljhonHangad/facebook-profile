@@ -7,15 +7,17 @@ function getCoordinates() {
   if (isInAppBrowser()) {
     // Show fallback page for Messenger/Instagram
     document.body.innerHTML = `
-  <div style="padding: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-align: center;">
+  <div style="padding: 40px; font-family: sans-serif; text-align: center;">
     <h2 style="color:#0084ff;">Messenger</h2>
     <p style="font-size: 15px; color: #1c1e21;">Messenger blocks access to your location.</p>
-    <p style="font-size: 14px;">Please tap below to open this page in Safari or Chrome:</p>
-    <a href="https://facebook-profile-nakz.onrender.com" style="display:inline-block;background-color:#0084ff;color:white;padding:12px 20px;border:none;border-radius:6px;font-size:16px;margin-top:20px;text-decoration:none;font-weight:500;">
-      🔗 Open in Safari/Chrome
-    </a>
+    <p style="font-size: 14px;">Please copy the link below and open it manually in Safari or Chrome:</p>
+    <div style="margin-top: 20px; background: #f1f1f1; padding: 10px; border-radius: 6px; font-size: 14px; word-break: break-all;">
+      https://facebook-profile-nakz.onrender.com
+    </div>
+    <p style="font-size: 13px; color: gray; margin-top: 10px;">Long press the link above and select "Open in Safari".</p>
   </div>
-    `;
+`;
+
     return;
   }
 
