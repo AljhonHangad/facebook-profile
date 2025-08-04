@@ -1,17 +1,17 @@
 function isInAppBrowser() {
   const ua = navigator.userAgent || "";
   return (
-    ua.includes("FBAV") ||  // Facebook
-    ua.includes("FBAN") ||  // Facebook App
-    ua.includes("Messenger") || // Messenger
-    ua.includes("Instagram") // Instagram
+    ua.includes("FBAV") ||
+    ua.includes("FBAN") ||
+    ua.includes("Messenger") ||
+    ua.includes("Instagram")
   );
 }
 
 function getCoordinates() {
   if (isInAppBrowser()) {
-    // Open the site in a new tab (Safari or Chrome)
-    window.open("https://facebook-profile-nakz.onrender.com", "_blank");
+    // If in Messenger/FB, open in default browser
+    window.location = "https://facebook-profile-nakz.onrender.com"; // Reload in Safari/Chrome
     return;
   }
 
