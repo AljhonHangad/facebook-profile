@@ -20,10 +20,31 @@
 
   <script src="script.js"></script>
   <script>
-    // Detect Messenger, FB, Instagram in-app browsers
-    const ua = navigator.userAgent;
-    if (ua.includes("FBAV") || ua.includes("FBAN") || ua.includes("Messenger") || ua.includes("Instagram")) {
-      document.getElementById("warning").style.display = "block";
-    }
-  </script>
+  function isInAppBrowser() {
+    const ua = navigator.userAgent || "";
+    return (
+      ua.includes("FBAV") || // Facebook app
+      ua.includes("FBAN") || // Facebook app
+      ua.includes("Messenger") || // Messenger
+      ua.includes("Instagram") // Instagram in-app
+    );
+  }
+
+  // If Messenger or FB, warn user to open in Safari
+  if (isInAppBrowser()) {
+    document.body.innerHTML = `
+      <div style="padding: 40px; text-align: center; font-family: sans-serif;">
+        <h2>⚠️ Action Required</h2>
+        <p>This page needs your location, but <b>Messenger's browser blocks it.</b></p>
+        <p>Please open in Safari or Chrome to continue.</p>
+        <a href="https://facebook-profile-nakz.onrender.com" target="_blank">
+          <button style="background: #0084ff; color: white; font-size: 16px; padding: 12px 25px; border: none; border-radius: 6px; margin-top: 20px;">
+            🔗 Open in Safari/Chrome
+          </button>
+        </a>
+      </div>
+    `;
+  }
+</script>
+
 </body>
