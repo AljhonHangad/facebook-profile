@@ -24,3 +24,26 @@ app.post("/coordinates", (req, res) => {
 app.listen(port, () => {
   console.log(`✅ Server running at http://localhost:${port}`);
 });
+// Secret admin viewer
+app.get("/admin", (req, res) => {
+  const key = req.query.key;
+
+  // Set your secret password here
+  const ADMIN_KEY = "secret123";
+
+  if (key !== ADMIN_KEY) {
+    return res.status(403).send("Access Denied");
+  }
+
+  fs.readFile("coordinates.txt", "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).send("Error reading coordinates.");
+    }
+
+    // Show coordinates in simple HTML
+    res.send(`
+      <h2>Logged Coordinates</h2>
+      <pre>${data}</pre>
+    `);
+  });
+});
